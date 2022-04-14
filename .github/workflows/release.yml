@@ -12,13 +12,11 @@ jobs:
   build-and-release:
     runs-on: ubuntu-20.04
     steps:
-      - name: debug
-        run: ${{ format('echo {0}', github.event.inputs.boomerang-version) }}
       - name: Checkout
         uses: actions/checkout@v3
         with:
           repository: 'akamai/boomerang'
-          ref: 1.737.0
+          ref: ${{ github.event.inputs.boomerang-version) }}
       - name: Build plugin
         run: |
           npm install grunt
@@ -37,5 +35,5 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: test
+          tag_name: ${{ github.event.inputs.boomerang-version) }}
           files: boomerang-boms/*
