@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: debug
-        run: ${{ format(echo {0}, inputs.boomerang-version) }}
+        run: ${{ format('echo {0}', inputs.boomerang-version) }}
       - name: Checkout
         uses: actions/checkout@v3
         with:
